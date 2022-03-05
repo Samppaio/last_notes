@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Actions from "./components/Actions";
+import Header from "./components/Header";
+import Logo from "./components/Logo";
+import Notes from "./components/Notes";
+import NotesArea from "./components/NotesArea";
+import HighlightProvider from "./context/HighlightContext";
+import NoteFormProvider from "./context/NoteFormContext";
+import NoteListProvider from "./context/NoteListContext";
+import "./global.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HighlightProvider>
+      <NoteFormProvider>
+        <NoteListProvider>
+          <Header>
+            <Logo />
+            <Actions />
+          </Header>
+          <NotesArea>
+            <Notes />
+          </NotesArea>
+        </NoteListProvider>
+      </NoteFormProvider>
+    </HighlightProvider>
   );
 }
 
